@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="application_name">五十音测试</string>
+
+    <string name="katakanaWithVoiceless">片假名 · 清音</string>
+    <string name="hiraganaWithVoiceless">平假名 · 清音</string>
+    <string name="katakanaWithVoicedSound">片假名 · 浊音</string>
+    <string name="hiraganaWithVoicedSound">平假名 · 浊音</string>
+    <string name="hiraganaWithSemiVoiced">平假名 · 半浊音</string>
+    <string name="katakanaWithSemivoiced">片假名 · 半浊音</string>
+
+    <string name="katakana">片假名</string>
+    <string name="hiragana">平假名</string>
+    <string name="romaji">罗马音</string>
+    <string name="sonant">浊音</string>
+
+    <string name="single">快测</string>
+    <string name="table">表格</string>
+
+    <string name="twister">绕口令</string>
+</resources>
