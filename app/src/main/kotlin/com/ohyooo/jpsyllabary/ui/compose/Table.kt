@@ -6,6 +6,9 @@ import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -25,7 +28,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.*
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.ohyooo.jpsyllabary.R
 import com.ohyooo.jpsyllabary.model.*
 import com.ohyooo.jpsyllabary.ui.compose.multifab.MultiFabItem
@@ -36,8 +40,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
+@OptIn(ExperimentalFoundationApi::class)
 @Preview
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Fragment(onMenuClick: () -> Unit = {}) {
     val scope = rememberCoroutineScope()
@@ -64,8 +68,8 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
                 Tab(pagerState, scope)
             }
 
-            HorizontalPager(count = tabList.size, state = pagerState, modifier = Modifier.weight(1F)) { page ->
-                Table(page = page, currentPage = currentPage, scope = scope, nSequence = nSequence, sSequence = sSequence)
+            HorizontalPager(pageCount = tabList.size, state = pagerState, modifier = Modifier.weight(1F)) { page ->
+                Table(page = page, currentPage = pagerState.currentPage, scope = scope, nSequence = nSequence, sSequence = sSequence)
             }
         }
 
@@ -78,7 +82,7 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
 
 private val tabList = listOf(R.string.hiragana, R.string.katakana, R.string.romaji, R.string.sonant)
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
 @Composable
 private fun Tab(pagerState: PagerState, scope: CoroutineScope) {
     val tabIndex = pagerState.currentPage
