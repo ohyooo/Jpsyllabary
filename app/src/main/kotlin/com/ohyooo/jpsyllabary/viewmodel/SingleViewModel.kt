@@ -168,9 +168,7 @@ object SingleViewModel {
         val kanaValue = value.first
         val pronValue = value.second
         val title: Int = getType(random)
-        val kana = kanaValue
-        val pron = pronValue
-        return SingleModel(title, kana, pron)
+        return SingleModel(title, kanaValue, pronValue)
     }
 
     //用队列

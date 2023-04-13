@@ -28,8 +28,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.ohyooo.jpsyllabary.R
 import com.ohyooo.jpsyllabary.model.*
 import com.ohyooo.jpsyllabary.ui.compose.multifab.MultiFabItem
@@ -82,14 +80,13 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
 
 private val tabList = listOf(R.string.hiragana, R.string.katakana, R.string.romaji, R.string.sonant)
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun Tab(pagerState: PagerState, scope: CoroutineScope) {
     val tabIndex = pagerState.currentPage
 
     TabRow(
         selectedTabIndex = tabIndex,
-        indicator = { tabPositions -> TabRowDefaults.Indicator(Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)) },
         backgroundColor = MaterialTheme.colorScheme.surfaceVariant
     ) {
         tabList.forEachIndexed { index, stringRes ->
@@ -199,8 +196,8 @@ fun BoxScope.Button(onClick: (Long) -> Unit) {
         fabIcon = Icons.Rounded.Add,
         items = if (toState == MultiFabState.EXPANDED) {
             listOf(
-                MultiFabItem("Shuffle", Icons.Rounded.Refresh, "Shuffle"),
-                MultiFabItem("Order", Icons.Rounded.List, "Order")
+                MultiFabItem(Icons.Rounded.Refresh, "Shuffle"),
+                MultiFabItem(Icons.Rounded.List, "Order")
             )
         } else emptyList(),
         toState = toState,

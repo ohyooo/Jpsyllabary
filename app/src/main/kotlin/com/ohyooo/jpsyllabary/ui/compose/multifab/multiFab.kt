@@ -1,10 +1,23 @@
 package com.ohyooo.jpsyllabary.ui.compose.multifab
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.Transition
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -90,7 +103,7 @@ private fun MiniFabItem(
     item: MultiFabItem,
     alpha: Float,
     shadow: Dp,
-    scale: Float,
+    ignoredScale: Float,
     showLabel: Boolean,
     onFabItemClicked: (item: MultiFabItem) -> Unit,
 ) {
@@ -106,8 +119,8 @@ private fun MiniFabItem(
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .alpha(animateFloatAsState(alpha).value)
-                    .shadow(animateDpAsState(shadow).value)
+                    .alpha(animateFloatAsState(alpha, label = "label").value)
+                    .shadow(animateDpAsState(shadow, label = "label").value)
                     .background(color = MaterialTheme.colorScheme.surface)
                     .padding(start = 6.dp, end = 6.dp, top = 4.dp, bottom = 4.dp)
             )

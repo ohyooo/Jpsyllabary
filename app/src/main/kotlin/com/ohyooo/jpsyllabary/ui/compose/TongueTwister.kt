@@ -1,5 +1,6 @@
 package com.ohyooo.jpsyllabary.ui.compose
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -7,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -24,10 +27,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.PagerScope
 import com.ohyooo.jpsyllabary.model.twisterList
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun Twister(onMenuClick: () -> Unit = {}) {
@@ -50,18 +53,15 @@ fun Twister(onMenuClick: () -> Unit = {}) {
         val scope = rememberCoroutineScope()
 
         repeat(twisterList.size) { column ->
-            val state = androidx.compose.foundation.pager.rememberPagerState()
+            val state = rememberPagerState()
             if (reset > 0L) {
                 scope.launch { state.animateScrollToPage(0) }
             }
-            Modifier
-                .weight(1F)
-            PaddingValues(0.dp)
-            PagerDefaults.flingBehavior(
+            HorizontalPager(
+                pageCount = twisterList[column].size,
                 state = state,
-                endContentPadding = contentPadding.calculateEndPadding(LayoutDirection.Ltr),
-            )
-            fun PagerScope.(row: Int) {
+                modifier = Modifier.weight(1F)
+            ) { row ->
                 Row(
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically,
