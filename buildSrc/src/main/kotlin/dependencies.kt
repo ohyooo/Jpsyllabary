@@ -4,7 +4,7 @@ object Ext {
     const val compileSdk = 33
     const val buildToolsVersion = "33.0.2"
     const val targetSdk = 33
-    const val versionCode = 19
+    const val versionCode = 20
     const val versionName = "3.1"
 }
 
