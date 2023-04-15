@@ -22,23 +22,10 @@ allprojects {
                 "-Xbackend-threads=12",
                 "-opt-in=kotlin.RequiresOptIn",
                 "-jvm-target=17",
+                "-language-version 2.0",
             )
         }
     }
-}
-
-kotlin {
-
-    sourceSets.all {
-
-        languageSettings {
-
-            languageVersion = "2.0"
-
-        }
-
-    }
-
 }
 
 tasks.withType<GroovyCompile>().configureEach {

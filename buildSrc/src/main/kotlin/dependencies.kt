@@ -14,7 +14,7 @@ object Libs {
     val debugImplementList = arrayListOf<String>()
 
     object Plugin {
-        val AGP = "com.android.tools.build:gradle:7.4.2".regUpdate()
+        val AGP = "com.android.tools.build:gradle:8.0.0".regUpdate()
         val KGP = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20".regUpdate()
 
         val list = arrayOf(AGP, KGP)
