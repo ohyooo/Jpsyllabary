@@ -27,6 +27,20 @@ allprojects {
     }
 }
 
+kotlin {
+
+    sourceSets.all {
+
+        languageSettings {
+
+            languageVersion = "2.0"
+
+        }
+
+    }
+
+}
+
 tasks.withType<GroovyCompile>().configureEach {
     options.isIncremental = true
     options.incrementalAfterFailure.set(true)
