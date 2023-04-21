@@ -25,8 +25,8 @@ object Libs {
     }
 
     object Compose {
-        const val composeVersion = "1.4.1"
-        const val compilerVersion = "1.4.5"
+        const val composeVersion = "1.4.2"
+        const val compilerVersion = "1.4.6"
         val compiler = "androidx.compose.compiler:compiler:$compilerVersion".regLib()
         val animation = "androidx.compose.animation:animation:$composeVersion".regLib()
         val foundation = "androidx.compose.foundation:foundation:$composeVersion".regLib()
@@ -41,8 +41,8 @@ object Libs {
 
     object AndroidX {
         val coreKtx = "androidx.core:core-ktx:1.10.0".regLib()
-        val fragmentKtx = "androidx.fragment:fragment-ktx:1.5.6".regLib()
-        val compose = "androidx.activity:activity-compose:1.7.0".regLib()
+        val fragmentKtx = "androidx.fragment:fragment-ktx:1.5.7".regLib()
+        val compose = "androidx.activity:activity-compose:1.7.1".regLib()
         val profileinstaller = "androidx.profileinstaller:profileinstaller:1.3.0".regLib()
     }
 
