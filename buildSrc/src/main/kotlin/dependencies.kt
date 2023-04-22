@@ -13,9 +13,14 @@ object Libs {
     val implementList = arrayListOf<String>()
     val debugImplementList = arrayListOf<String>()
 
+    object Version {
+        const val agp = "8.0.0"
+        const val kotlin = "1.8.20"
+    }
+
     object Plugin {
-        val AGP = "com.android.tools.build:gradle:8.0.0".regUpdate()
-        val KGP = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20".regUpdate()
+        val AGP = "com.android.tools.build:gradle:${Version.agp}".regUpdate()
+        val KGP = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}".regUpdate()
 
         val list = arrayOf(AGP, KGP)
     }
