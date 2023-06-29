@@ -14,8 +14,8 @@ object Libs {
     val debugImplementList = arrayListOf<String>()
 
     object Version {
-        const val agp = "8.0.1"
-        const val kotlin = "1.8.21"
+        const val agp = "8.0.2"
+        const val kotlin = "1.8.22"
     }
 
     object Plugin {
@@ -26,29 +26,29 @@ object Libs {
     }
 
     object Kotlin {
-        val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4".regLib()
+        val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1".regLib()
     }
 
     object Compose {
-        const val composeVersion = "1.4.2"
-        const val compilerVersion = "1.4.6"
+        const val composeVersion = "1.4.3"
+        const val compilerVersion = "1.4.8"
         val compiler = "androidx.compose.compiler:compiler:$compilerVersion".regLib()
         val animation = "androidx.compose.animation:animation:$composeVersion".regLib()
         val foundation = "androidx.compose.foundation:foundation:$composeVersion".regLib()
-        val material = "androidx.compose.material3:material3:1.0.1".regLib()
+        val material = "androidx.compose.material3:material3:1.1.1".regLib()
         val materialIconsExtended = "androidx.compose.material:material-icons-extended:$composeVersion".regLib()
         val runtime = "androidx.compose.runtime:runtime:$composeVersion".regLib()
         val tooling = "androidx.compose.ui:ui-tooling:$composeVersion".regUpdate().regDebug()
         val preview = "androidx.compose.ui:ui-tooling-preview:$composeVersion".regLib()
         val ui = "androidx.compose.ui:ui:$composeVersion".regLib()
-        val navigation = "androidx.navigation:navigation-compose:2.5.3".regLib()
+        val navigation = "androidx.navigation:navigation-compose:2.6.0".regLib()
     }
 
     object AndroidX {
-        val coreKtx = "androidx.core:core-ktx:1.10.0".regLib()
-        val fragmentKtx = "androidx.fragment:fragment-ktx:1.5.7".regLib()
-        val compose = "androidx.activity:activity-compose:1.7.1".regLib()
-        val profileinstaller = "androidx.profileinstaller:profileinstaller:1.3.0".regLib()
+        val coreKtx = "androidx.core:core-ktx:1.10.1".regLib()
+        val fragmentKtx = "androidx.fragment:fragment-ktx:1.6.0".regLib()
+        val compose = "androidx.activity:activity-compose:1.7.2".regLib()
+        val profileinstaller = "androidx.profileinstaller:profileinstaller:1.3.1".regLib()
     }
 
     object Google {
