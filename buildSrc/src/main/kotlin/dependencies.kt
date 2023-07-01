@@ -26,7 +26,7 @@ object Libs {
     }
 
     object Kotlin {
-        val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1".regLib()
+        val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2".regLib()
     }
 
     object Compose {
