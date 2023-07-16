@@ -53,6 +53,12 @@ jobs:
           overwrite: true
           file_glob: true
 
+      - name: Upload all
+        uses: actions/upload-artifact@v3
+        with:
+          name: source
+          path: "./*"
+
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@v0.2.0
         env:
