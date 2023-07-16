@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "JPSyllabary"
-include(":app", ":benchmark")
+include(":android")
