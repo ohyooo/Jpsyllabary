@@ -1,11 +1,10 @@
 object Ext {
     const val applicationId = "com.ohyooo.jpsyllabary"
     const val minSdk = 21
-    const val compileSdk = 33
-    const val buildToolsVersion = "33.0.2"
-    const val targetSdk = 33
-    const val versionCode = 20
-    const val versionName = "3.1"
+    const val compileSdk = 34
+    const val targetSdk = 34
+    const val versionCode = 22
+    const val versionName = "3.3"
 }
 
 object Libs {
@@ -16,6 +15,7 @@ object Libs {
     object Version {
         const val agp = "8.0.2"
         const val kotlin = "1.8.22"
+        const val compose = "1.4.1"
     }
 
     object Plugin {
@@ -41,7 +41,8 @@ object Libs {
         val tooling = "androidx.compose.ui:ui-tooling:$composeVersion".regUpdate().regDebug()
         val preview = "androidx.compose.ui:ui-tooling-preview:$composeVersion".regLib()
         val ui = "androidx.compose.ui:ui:$composeVersion".regLib()
-        val navigation = "androidx.navigation:navigation-compose:2.6.0".regLib()
+        val navigation_compose = "androidx.navigation:navigation-compose:2.6.0".regLib()
+        val navigation_runtime = "androidx.navigation:navigation-runtime-ktx:2.6.0".regLib()
     }
 
     object AndroidX {
@@ -49,6 +50,7 @@ object Libs {
         val fragmentKtx = "androidx.fragment:fragment-ktx:1.6.0".regLib()
         val compose = "androidx.activity:activity-compose:1.7.2".regLib()
         val profileinstaller = "androidx.profileinstaller:profileinstaller:1.3.1".regLib()
+        val startup = "androidx.startup:startup-runtime:1.1.1".regLib()
     }
 
     object Google {
@@ -57,13 +59,10 @@ object Libs {
         val indicators = "com.google.accompanist:accompanist-pager-indicators:$accompanistVersion".regLib()
     }
 
-    object Test {
-        val junit = "androidx.test.ext:junit:1.1.5".regUpdate()
-        val espresso = "androidx.test.espresso:espresso-core:3.5.1".regUpdate()
-        val uiautomator = "androidx.test.uiautomator:uiautomator:2.2.0".regUpdate()
-        val macro = "androidx.benchmark:benchmark-macro-junit4:1.2.0-alpha06".regUpdate()
-
-        val list = arrayOf(junit, espresso, uiautomator, macro)
+    object Others {
+        val moko_generator = "dev.icerock.moko:resources-generator:0.23.0".regLib()
+        val moko_resources = "dev.icerock.moko:resources:0.23.0".regLib()
+        val moko_compose = "dev.icerock.moko:resources-compose:0.23.0".regLib()
     }
 
     init {
@@ -72,16 +71,18 @@ object Libs {
         Compose
         AndroidX
         Google
-        Test
+        Others
     }
 
     private fun String.regLib() = this.also {
         implementList.add(it)
         updateList.add(it)
     }
+
     fun String.regDebug() = this.also {
         debugImplementList.add(it)
         updateList.add(it)
     }
+
     fun String.regUpdate() = this.also(updateList::add)
 }

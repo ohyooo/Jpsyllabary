@@ -1,19 +1,29 @@
-@file:Suppress("UnstableApiUsage")
-
-plugins {
-    id("com.android.application") version Libs.Version.agp apply false
-    kotlin("android") version Libs.Version.kotlin apply false
-}
+group = "com.ohyooo"
+version = "1.0.0"
 
 allprojects {
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "17"
-            freeCompilerArgs = freeCompilerArgs + listOf(
-                "-Xbackend-threads=12", "-Xcontext-receivers", "-jvm-target=17"
-            )
-        }
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath(Libs.Others.moko_generator)
+    }
+}
+
+plugins {
+    kotlin("multiplatform").version(Libs.Version.kotlin) apply false
+    kotlin("android").version(Libs.Version.kotlin) apply false
+    id("com.android.application").version(Libs.Version.agp) apply false
+    id("com.android.library").version(Libs.Version.agp) apply false
+    id("org.jetbrains.compose").version(Libs.Version.compose) apply false
 }
 
 tasks.register<UpdateTask>("update")

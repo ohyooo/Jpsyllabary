@@ -117,3 +117,7 @@ fabric.properties
 # End of https://www.gitignore.io/api/androidstudio
 
 screenshots
+
+*/karma*
+*/webpack*
+kotlin-js-store

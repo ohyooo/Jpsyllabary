@@ -1,14 +1,28 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
+    id("org.jetbrains.compose")
     id("com.android.application")
     kotlin("android")
+}
+
+group = "com.ohyooo"
+version = "1.0.0"
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(":common"))
+    implementation(Libs.AndroidX.compose)
 }
 
 android {
     signingConfigs {
         getByName("debug") {
-            storeFile = file("..\\signkey.jks")
+            storeFile = file("signkey.jks")
             storePassword = "123456"
             keyPassword = "123456"
             keyAlias = "demo"
@@ -17,16 +31,19 @@ android {
             enableV4Signing = true
         }
     }
-    namespace = "com.ohyooo.jpsyllabary"
+    namespace = "com.ohyooo.android"
     compileSdk = Ext.compileSdk
-    buildToolsVersion = Ext.buildToolsVersion
     defaultConfig {
-        applicationId = Ext.applicationId
+        applicationId = "com.ohyooo.jpsyllabary"
         minSdk = Ext.minSdk
         targetSdk = Ext.targetSdk
         versionCode = Ext.versionCode
         versionName = Ext.versionName + hashTag
         signingConfig = signingConfigs.getByName("debug")
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildTypes {
         debug {
@@ -37,43 +54,18 @@ android {
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "consumer-rules.pro")
         }
-        create("benchmark") {
-            initWith(getByName("release"))
-            signingConfig = signingConfigs.getByName("debug")
-            matchingFallbacks += listOf("release")
-            isDebuggable = false
-
-            // https://developer.android.com/topic/performance/baselineprofiles/create-baselineprofile
-            // Benchmark builds should not be obfuscated.
-            postprocessing {
-                isRemoveUnusedCode = true
-                isRemoveUnusedResources = true
-                isObfuscate = false
-                isOptimizeCode = true
-            }
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
-
         // Disable unused AGP features
         buildConfig = false
         aidl = false
         renderScript = false
         shaders = false
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Compose.compilerVersion
+    compose {
+        kotlinCompilerPlugin.set(Libs.Compose.compiler)
     }
-}
-
-dependencies {
-    Libs.implementList.forEach(::implementation)
-    Libs.debugImplementList.forEach(::debugImplementation)
 }
 
 val hashTag: String
