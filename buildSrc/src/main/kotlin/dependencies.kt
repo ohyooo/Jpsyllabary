@@ -14,7 +14,7 @@ object Libs {
 
     object Version {
         const val agp = "8.0.2"
-        const val kotlin = "1.8.22"
+        const val kotlin = "1.9.0"
         const val compose = "1.4.1"
     }
 
@@ -31,7 +31,7 @@ object Libs {
 
     object Compose {
         const val composeVersion = "1.4.3"
-        const val compilerVersion = "1.4.8"
+        const val compilerVersion = "1.5.0"
         val compiler = "androidx.compose.compiler:compiler:$compilerVersion".regLib()
         val animation = "androidx.compose.animation:animation:$composeVersion".regLib()
         val foundation = "androidx.compose.foundation:foundation:$composeVersion".regLib()
