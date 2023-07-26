@@ -13,9 +13,9 @@ object Libs {
     val debugImplementList = arrayListOf<String>()
 
     object Version {
-        const val agp = "8.0.2"
+        const val agp = "8.1.0"
         const val kotlin = "1.9.0"
-        const val compose = "1.4.1"
+        const val compose = "1.4.3"
     }
 
     object Plugin {
