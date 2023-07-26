@@ -11,7 +11,7 @@ group = "com.ohyooo"
 version = "1.0.0"
 
 kotlin {
-    android()
+    androidTarget()
     jvm("desktop") {
         jvmToolchain(17)
     }
@@ -49,6 +49,8 @@ kotlin {
 
 android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    // https://github.com/icerockdev/moko-resources/issues/353#issuecomment-1179713713
+    sourceSets.getByName("main").res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
     namespace = "com.ohyooo.jpsyllabary.common"
     compileSdk = Ext.compileSdk
     defaultConfig {
