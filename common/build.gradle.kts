@@ -4,7 +4,6 @@ plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.library")
-    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 group = "com.ohyooo"
@@ -23,8 +22,6 @@ kotlin {
                 api(compose.material)
                 api(compose.material3)
                 api(compose.materialIconsExtended)
-                api(Libs.Others.moko_resources)
-                api(Libs.Others.moko_compose)
             }
         }
         val commonTest by getting {
@@ -34,8 +31,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api(Libs.AndroidX.coreKtx)
-                api(Libs.AndroidX.startup)
+                api(libs.androidx.core.ktx)
+                api(libs.startup.runtime)
             }
         }
         val desktopMain by getting {
@@ -50,23 +47,19 @@ kotlin {
 android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     // https://github.com/icerockdev/moko-resources/issues/353#issuecomment-1179713713
-    sourceSets.getByName("main").res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
+    sourceSets.getByName("main").res.srcDir(File(layout.buildDirectory.get().asFile, "generated/moko/androidMain/res"))
     namespace = "com.ohyooo.jpsyllabary.common"
-    compileSdk = Ext.compileSdk
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = Ext.minSdk
+        minSdk = libs.versions.min.sdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     compose {
-        kotlinCompilerPlugin.set(Libs.Compose.compiler)
+        // kotlinCompilerPlugin.set(Libs.Compose.compiler)
     }
-}
-
-multiplatformResources {
-    multiplatformResourcesPackage = "com.ohyooo.common"
 }
 
 // TODO move to gradle plugin
@@ -76,7 +69,7 @@ tasks.withType<DummyFrameworkTask>().configureEach {
         override fun execute(task: Task) {
             task as DummyFrameworkTask
 
-            val frameworkDir = File(task.destinationDir, task.frameworkName.get() + ".framework")
+            val frameworkDir = File(task.outputFramework.get().asFile, task.frameworkName.get() + ".framework")
 
             listOf(
                 "compose-resources-gallery:shared.bundle"
