@@ -45,7 +45,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ohyooo.common.MR
 import com.ohyooo.common.compose.multifab.MultiFabItem
 import com.ohyooo.common.compose.multifab.MultiFabState
 import com.ohyooo.common.compose.multifab.MultiFloatingActionButton
@@ -58,7 +57,7 @@ import com.ohyooo.common.model.shuffle
 import com.ohyooo.common.model.sonant
 import com.ohyooo.common.model.sonantRomaji
 import com.ohyooo.common.model.sonantSequence
-import dev.icerock.moko.resources.compose.stringResource
+import com.ohyooo.common.res.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -69,7 +68,7 @@ import kotlin.math.roundToInt
 fun Fragment(onMenuClick: () -> Unit = {}) {
     val scope = rememberCoroutineScope()
 
-    val pagerState = rememberPagerState(0)
+    val pagerState = rememberPagerState(0, pageCount = { tabList.size })
 
     var nSequence by rememberSaveable { mutableStateOf(normalSequence) }
     var sSequence by rememberSaveable { mutableStateOf(sonantSequence) }
@@ -92,7 +91,7 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
                 Tab(pagerState, scope)
             }
 
-            HorizontalPager(pageCount = tabList.size, state = pagerState, modifier = Modifier.weight(1F)) { page ->
+            HorizontalPager(state = pagerState, modifier = Modifier.weight(1F)) { page ->
                 Table(page = page, currentPage = pagerState.currentPage, scope = scope, nSequence = nSequence, sSequence = sSequence)
             }
         }
@@ -104,7 +103,7 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
     }
 }
 
-private val tabList = listOf(MR.strings.hiragana, MR.strings.katakana, MR.strings.romaji, MR.strings.sonant)
+private val tabList = listOf(R.strings.hiragana, R.strings.katakana, R.strings.romaji, R.strings.sonant)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -121,7 +120,7 @@ private fun Tab(pagerState: PagerState, scope: CoroutineScope) {
                 onClick = { scope.launch { pagerState.scrollToPage(index) } },
                 text = {
                     AutoResizeText(
-                        text = stringResource(stringRes),
+                        text = stringRes,
                         fontSizeRange = FontSizeRange(8.sp, 12.sp),
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.inverseSurface,

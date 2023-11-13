@@ -51,12 +51,15 @@ fun Twister(onMenuClick: () -> Unit = {}) {
         val scope = rememberCoroutineScope()
 
         repeat(twisterList.size) { column ->
-            val state = rememberPagerState()
+            val state = rememberPagerState(
+                initialPage = 0,
+                initialPageOffsetFraction = 0f,
+                pageCount = { twisterList[column].size },
+            )
             if (reset > 0L) {
                 scope.launch { state.animateScrollToPage(0) }
             }
             HorizontalPager(
-                pageCount = twisterList[column].size,
                 state = state,
                 modifier = Modifier.weight(1F)
             ) { row ->

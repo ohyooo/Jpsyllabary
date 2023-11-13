@@ -1,7 +1,6 @@
 package com.ohyooo.common.viewmodel
 
-import com.ohyooo.common.MR
-import dev.icerock.moko.resources.StringResource
+import com.ohyooo.common.res.R
 
 object SingleViewModel {
     private var tvQueue = ArrayList<Int>()
@@ -151,13 +150,13 @@ object SingleViewModel {
     private val count by lazy(LazyThreadSafetyMode.NONE) { dicts.size }
 
     private fun getType(name: Int) = when (name) {
-        in 0..44 -> MR.strings.katakanaWithVoiceless
-        in 45..89 -> MR.strings.hiraganaWithVoiceless
-        in 90..109 -> MR.strings.katakanaWithVoicedSound
-        in 110..129 -> MR.strings.hiraganaWithVoicedSound
-        in 130..134 -> MR.strings.hiraganaWithSemiVoiced
-        in 135..139 -> MR.strings.katakanaWithSemivoiced
-        else -> MR.strings.empty
+        in 0..44 -> R.strings.katakanaWithVoiceless
+        in 45..89 -> R.strings.hiraganaWithVoiceless
+        in 90..109 -> R.strings.katakanaWithVoicedSound
+        in 110..129 -> R.strings.hiraganaWithVoicedSound
+        in 130..134 -> R.strings.hiraganaWithSemiVoiced
+        in 135..139 -> R.strings.katakanaWithSemivoiced
+        else -> R.strings.empty
     }
 
     fun get(): SingleModel {
@@ -165,7 +164,7 @@ object SingleViewModel {
         val value = dicts[random]
         val kanaValue = value.first
         val pronValue = value.second
-        val title: StringResource = getType(random)
+        val title = getType(random)
         return SingleModel(title, kanaValue, pronValue)
     }
 
@@ -194,7 +193,7 @@ object SingleViewModel {
 }
 
 class SingleModel(
-    val title: StringResource,
+    val title: String,
     val kana: String,
     val pron: String,
 )

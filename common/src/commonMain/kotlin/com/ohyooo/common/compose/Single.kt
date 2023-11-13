@@ -19,16 +19,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ohyooo.common.MR
+import com.ohyooo.common.res.R
 import com.ohyooo.common.viewmodel.SingleViewModel
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun Single(onMenuClick: () -> Unit = {}) {
@@ -44,7 +44,7 @@ fun Single(onMenuClick: () -> Unit = {}) {
             .fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        var type by rememberSaveable { mutableStateOf(MR.strings.katakanaWithVoiceless) }
+        var type by rememberSaveable { mutableStateOf(R.strings.katakanaWithVoiceless) }
         var character by rememberSaveable { mutableStateOf("あ") }
         var hint by rememberSaveable { mutableStateOf("a") }
         var hintVisible by rememberSaveable { mutableStateOf(false) }
@@ -60,7 +60,7 @@ fun Single(onMenuClick: () -> Unit = {}) {
 
         val onHintClick: () -> Unit = { hintVisible = !hintVisible }
 
-        Type(modifier = Modifier.weight(1F), stringResource(type))
+        Type(modifier = Modifier.weight(1F), type)
 
         Divider(color = Color.Gray, thickness = 1.dp)
 
@@ -117,10 +117,11 @@ fun Hint(modifier: Modifier, text: String, visible: Boolean, onClick: () -> Unit
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
     Image(
-        painter = painterResource(MR.images.round),
+        painter = painterResource("images/round.png"),
         contentDescription = "Next",
         contentScale = ContentScale.Inside,
         modifier = modifier

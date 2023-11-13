@@ -30,9 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.ohyooo.common.MR
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
+import com.ohyooo.common.res.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -49,10 +47,10 @@ fun Main() {
         drawerContent = {
             ModalDrawerSheet {
                 Spacer(modifier = Modifier.height(64.dp))
-                DrawerNavItem(stringRes = MR.strings.single, route = Route.SINGLE, icon = Icons.Filled.Home, scope, scaffoldState) { route = Route.SINGLE }
-                DrawerNavItem(stringRes = MR.strings.table, route = Route.TABLE, icon = Icons.Filled.ListAlt, scope, scaffoldState) { route = Route.TABLE }
-                DrawerNavItem(stringRes = MR.strings.twister, route = Route.Twister, icon = Icons.Filled.ChangeHistory, scope, scaffoldState) { route = Route.Twister }
-                DrawerNavItem(stringRes = MR.strings.source_code, route = Route.SOURCE, icon = Icons.Filled.DataObject, scope, scaffoldState) { route = Route.SOURCE }
+                DrawerNavItem(stringRes = R.strings.single, route = Route.SINGLE, icon = Icons.Filled.Home, scope, scaffoldState) { route = Route.SINGLE }
+                DrawerNavItem(stringRes = R.strings.table, route = Route.TABLE, icon = Icons.Filled.ListAlt, scope, scaffoldState) { route = Route.TABLE }
+                DrawerNavItem(stringRes = R.strings.twister, route = Route.Twister, icon = Icons.Filled.ChangeHistory, scope, scaffoldState) { route = Route.Twister }
+                DrawerNavItem(stringRes = R.strings.source_code, route = Route.SOURCE, icon = Icons.Filled.DataObject, scope, scaffoldState) { route = Route.SOURCE }
             }
         },
         drawerGesturesEnabled = false,
@@ -74,10 +72,9 @@ fun Main() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DrawerNavItem(
-    stringRes: StringResource,
+    stringRes: String,
     route: Route,
     icon: ImageVector,
     scope: CoroutineScope,
@@ -87,8 +84,8 @@ fun DrawerNavItem(
     // val selected = navController.currentBackStackEntryAsState().value?.destination?.route == route.value
 
     NavigationDrawerItem(
-        label = { Text(text = stringResource(stringRes), color = MaterialTheme.colorScheme.inverseSurface) },
-        icon = { Icon(imageVector = icon, contentDescription = stringResource(stringRes), tint = MaterialTheme.colorScheme.inverseSurface) },
+        label = { Text(text = stringRes, color = MaterialTheme.colorScheme.inverseSurface) },
+        icon = { Icon(imageVector = icon, contentDescription = stringRes, tint = MaterialTheme.colorScheme.inverseSurface) },
         selected = false,
         onClick = {
             // navController.navigate(route.value)
