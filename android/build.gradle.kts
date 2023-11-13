@@ -65,7 +65,7 @@ android {
         shaders = false
     }
     compose {
-        // kotlinCompilerPlugin.set(libs.compose.compiler.get().toInt())
+        kotlinCompilerPlugin.set(libs.compose.compiler.get().toString())
     }
 }
 

@@ -59,7 +59,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     compose {
-        // kotlinCompilerPlugin.set(Libs.Compose.compiler)
+        kotlinCompilerPlugin.set(libs.compose.compiler.get().toString())
     }
 }
 
