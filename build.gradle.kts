@@ -16,7 +16,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version libs.versions.kotlin.get() apply false
+    alias(libs.plugins.kmm) apply false
     alias(libs.plugins.agp) apply false
     alias(libs.plugins.kgp) apply false
     alias(libs.plugins.jc) apply false

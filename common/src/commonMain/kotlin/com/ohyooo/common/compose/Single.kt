@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -22,8 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -121,7 +122,7 @@ fun Hint(modifier: Modifier, text: String, visible: Boolean, onClick: () -> Unit
 @Composable
 fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
     Image(
-        painter = painterResource("images/round.png"),
+        painter = rememberVectorPainter(Icons.Default.Circle),
         contentDescription = "Next",
         contentScale = ContentScale.Inside,
         modifier = modifier
