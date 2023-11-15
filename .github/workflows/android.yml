@@ -25,7 +25,7 @@ jobs:
           format: 'YYYYMMDDHHmmss'
      
       - name: Setup JDK
-        uses: actions/setup-java@latest
+        uses: actions/setup-java@main
         with:
           distribution: 'zulu'
           java-version: '17'
@@ -38,7 +38,7 @@ jobs:
         run: ./gradlew :android:assembleRelease
 
       - name: Upload to release
-        uses: svenstaro/upload-release-action@latest
+        uses: svenstaro/upload-release-action@master
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: android/build/outputs/apk/release/*.apk
