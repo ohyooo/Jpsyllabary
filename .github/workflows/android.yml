@@ -48,7 +48,7 @@ jobs:
           file_glob: true
 
       - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@latest
+        uses: dev-drprasad/delete-older-releases@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
