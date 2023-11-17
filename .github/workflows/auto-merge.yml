@@ -20,6 +20,6 @@ jobs:
         uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
           # This must be a personal access token with push access
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
           # By default, squash and merge, so Github chooses nice commit messages
           command: squash and merge
