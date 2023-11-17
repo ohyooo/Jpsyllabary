@@ -1,31 +1,20 @@
-name: Auto Merge
+name: Auto Merge Dependabot PRs
 
 on:
   pull_request:
-    types: [labeled, synchronize, opened, reopened, ready_for_review]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   check_suite:
     types: [completed]
+  status: {}
 
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' && github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
-      - name: Merge Pull Requests
-        if: github.actor == 'dependabot[bot]' && github.event_name == 'check_suite' && github.event.check_suite.conclusion == 'success'
-        uses: actions/github-script@latest
+      - name: Auto merge Dependabot PRs
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            const pullRequest = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            });
-            if (pullRequest.data.state === 'open') {
-              await github.rest.pulls.merge({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number,
-                merge_method: 'squash', // 或者 'merge' 或 'rebase'
-              });
-            }
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          command: 'merge'
+          target: 'minor'
