@@ -8,8 +8,8 @@ version_name = "2.10"
 
 agp = "8.1.4"
 kotlin = "1.9.20"
-compose = "1.5.3"
 compose_compiler = "1.5.4"
+compose = "1.5.4"
 
 [plugins]
 agp = { id = "com.android.application", version.ref = "agp" }
