@@ -31,7 +31,7 @@ android {
             enableV4Signing = true
         }
     }
-    namespace = libs.versions.application.id.get()
+    namespace = "com.ohyooo.android"
     compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
         applicationId = libs.versions.application.id.get()
