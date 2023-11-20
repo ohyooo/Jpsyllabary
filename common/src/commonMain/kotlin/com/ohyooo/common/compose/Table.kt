@@ -57,7 +57,7 @@ import com.ohyooo.common.model.shuffle
 import com.ohyooo.common.model.sonant
 import com.ohyooo.common.model.sonantRomaji
 import com.ohyooo.common.model.sonantSequence
-import com.ohyooo.common.res.R
+import com.ohyooo.common.res.RR
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -103,7 +103,7 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
     }
 }
 
-private val tabList = listOf(R.strings.hiragana, R.strings.katakana, R.strings.romaji, R.strings.sonant)
+private val tabList = listOf(RR.strings.hiragana, RR.strings.katakana, RR.strings.romaji, RR.strings.sonant)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

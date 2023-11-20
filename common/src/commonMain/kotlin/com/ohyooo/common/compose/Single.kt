@@ -28,7 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ohyooo.common.res.R
+import com.ohyooo.common.res.RR
 import com.ohyooo.common.viewmodel.SingleViewModel
 
 @Composable
@@ -45,7 +45,7 @@ fun Single(onMenuClick: () -> Unit = {}) {
             .fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        var type by rememberSaveable { mutableStateOf(R.strings.katakanaWithVoiceless) }
+        var type by rememberSaveable { mutableStateOf(RR.strings.katakanaWithVoiceless) }
         var character by rememberSaveable { mutableStateOf("あ") }
         var hint by rememberSaveable { mutableStateOf("a") }
         var hintVisible by rememberSaveable { mutableStateOf(false) }

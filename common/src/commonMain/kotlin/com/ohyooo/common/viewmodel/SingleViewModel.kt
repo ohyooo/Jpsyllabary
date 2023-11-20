@@ -1,6 +1,6 @@
 package com.ohyooo.common.viewmodel
 
-import com.ohyooo.common.res.R
+import com.ohyooo.common.res.RR
 
 object SingleViewModel {
     private var tvQueue = ArrayList<Int>()
@@ -150,13 +150,13 @@ object SingleViewModel {
     private val count by lazy(LazyThreadSafetyMode.NONE) { dicts.size }
 
     private fun getType(name: Int) = when (name) {
-        in 0..44 -> R.strings.katakanaWithVoiceless
-        in 45..89 -> R.strings.hiraganaWithVoiceless
-        in 90..109 -> R.strings.katakanaWithVoicedSound
-        in 110..129 -> R.strings.hiraganaWithVoicedSound
-        in 130..134 -> R.strings.hiraganaWithSemiVoiced
-        in 135..139 -> R.strings.katakanaWithSemivoiced
-        else -> R.strings.empty
+        in 0..44 -> RR.strings.katakanaWithVoiceless
+        in 45..89 -> RR.strings.hiraganaWithVoiceless
+        in 90..109 -> RR.strings.katakanaWithVoicedSound
+        in 110..129 -> RR.strings.hiraganaWithVoicedSound
+        in 130..134 -> RR.strings.hiraganaWithSemiVoiced
+        in 135..139 -> RR.strings.katakanaWithSemivoiced
+        else -> RR.strings.empty
     }
 
     fun get(): SingleModel {

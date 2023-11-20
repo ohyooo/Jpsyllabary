@@ -1,6 +1,6 @@
 package com.ohyooo.common.res
 
-object R {
+object RR {
     val strings: Strings
         get() = ZHStrings
 }

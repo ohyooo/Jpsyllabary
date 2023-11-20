@@ -30,7 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.ohyooo.common.res.R
+import com.ohyooo.common.res.RR
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -47,10 +47,10 @@ fun Main() {
         drawerContent = {
             ModalDrawerSheet {
                 Spacer(modifier = Modifier.height(64.dp))
-                DrawerNavItem(stringRes = R.strings.single, route = Route.SINGLE, icon = Icons.Filled.Home, scope, scaffoldState) { route = Route.SINGLE }
-                DrawerNavItem(stringRes = R.strings.table, route = Route.TABLE, icon = Icons.Filled.ListAlt, scope, scaffoldState) { route = Route.TABLE }
-                DrawerNavItem(stringRes = R.strings.twister, route = Route.Twister, icon = Icons.Filled.ChangeHistory, scope, scaffoldState) { route = Route.Twister }
-                DrawerNavItem(stringRes = R.strings.source_code, route = Route.SOURCE, icon = Icons.Filled.DataObject, scope, scaffoldState) { route = Route.SOURCE }
+                DrawerNavItem(stringRes = RR.strings.single, route = Route.SINGLE, icon = Icons.Filled.Home, scope, scaffoldState) { route = Route.SINGLE }
+                DrawerNavItem(stringRes = RR.strings.table, route = Route.TABLE, icon = Icons.Filled.ListAlt, scope, scaffoldState) { route = Route.TABLE }
+                DrawerNavItem(stringRes = RR.strings.twister, route = Route.Twister, icon = Icons.Filled.ChangeHistory, scope, scaffoldState) { route = Route.Twister }
+                DrawerNavItem(stringRes = RR.strings.source_code, route = Route.SOURCE, icon = Icons.Filled.DataObject, scope, scaffoldState) { route = Route.SOURCE }
             }
         },
         drawerGesturesEnabled = false,
