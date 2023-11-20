@@ -118,7 +118,6 @@ fun Hint(modifier: Modifier, text: String, visible: Boolean, onClick: () -> Unit
     }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
     Image(

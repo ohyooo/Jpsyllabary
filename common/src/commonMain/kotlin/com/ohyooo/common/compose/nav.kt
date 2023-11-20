@@ -34,7 +34,6 @@ import com.ohyooo.common.res.RR
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Main() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
