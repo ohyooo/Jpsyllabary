@@ -20,7 +20,7 @@ jc = { id = "org.jetbrains.compose", version = "1.5.11" }
 
 [libraries]
 # Kotlin
-kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2"
 
 # Compose
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose_compiler" }
