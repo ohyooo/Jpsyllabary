@@ -15,11 +15,11 @@ jobs:
         with:
           token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
           issue-number: ${{ github.event.pull_request.number }}
-          body-includes: '@dependabot merge'
+          body-includes: '@dependabot squash and merge'
       - uses: peter-evans/create-or-update-comment@main
         with:
           token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
-          body: '@dependabot merge'
+          body: '@dependabot squash and merge'
           edit-mode: replace
