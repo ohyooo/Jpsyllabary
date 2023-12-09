@@ -12,7 +12,7 @@ version = "1.0.0"
 kotlin {
     androidTarget()
     jvm("desktop") {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
     sourceSets {
         val commonMain by getting {
@@ -55,8 +55,8 @@ android {
         minSdk = libs.versions.min.sdk.get().toInt()
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     // composeOptions {
     //     kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
