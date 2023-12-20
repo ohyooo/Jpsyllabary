@@ -1,4 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.DummyFrameworkTask
+import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     kotlin("multiplatform")
@@ -10,9 +13,29 @@ group = "com.ohyooo"
 version = "1.0.0"
 
 kotlin {
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        moduleName = "composeApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+        }
+        binaries.executable()
+    }
     androidTarget()
     jvm("desktop") {
         jvmToolchain(21)
+    }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
     }
     sourceSets {
         val commonMain by getting {
@@ -23,65 +46,62 @@ kotlin {
                 api(compose.material)
                 api(compose.material3)
                 api(compose.materialIconsExtended)
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
+                @OptIn(ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
             }
         }
         val androidMain by getting {
             dependencies {
                 api(libs.androidx.core.ktx)
                 api(libs.startup.runtime)
+                implementation(libs.compose.ui.tooling.preview)
+                implementation(libs.activity.compose)
             }
         }
         val desktopMain by getting {
             dependencies {
+                implementation(compose.desktop.currentOs)
                 api(compose.preview)
             }
         }
-        val desktopTest by getting
     }
 }
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    // https://github.com/icerockdev/moko-resources/issues/353#issuecomment-1179713713
-    sourceSets.getByName("main").res.srcDir(File(layout.buildDirectory.get().asFile, "generated/moko/androidMain/res"))
     namespace = "com.ohyooo.jpsyllabary.shared"
     compileSdk = libs.versions.compile.sdk.get().toInt()
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
     defaultConfig {
         minSdk = libs.versions.min.sdk.get().toInt()
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    // composeOptions {
-    //     kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    // }
-    // compose {
-    //     kotlinCompilerPlugin.set(libs.compose.compiler.get().toString())
-    // }
+    dependencies {
+        debugImplementation(libs.compose.ui.tooling)
+    }
 }
 
-// TODO move to gradle plugin
-tasks.withType<DummyFrameworkTask>().configureEach {
-    @Suppress("ObjectLiteralToLambda")
-    doLast(object : Action<Task> {
-        override fun execute(task: Task) {
-            task as DummyFrameworkTask
+compose.desktop {
+    application {
+        mainClass = "MainKt"
 
-            val frameworkDir = File(task.outputFramework.get().asFile, task.frameworkName.get() + ".framework")
-
-            listOf(
-                "compose-resources-gallery:shared.bundle"
-            ).forEach { bundleName ->
-                val bundleDir = File(frameworkDir, bundleName)
-                bundleDir.mkdir()
-                File(bundleDir, "dummyFile").writeText("dummy")
-            }
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "com.ohyooo.jpsyllabary"
+            packageVersion = "1.0.0"
         }
-    })
+    }
+}
+
+compose.experimental {
+    web.application {}
 }
