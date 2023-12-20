@@ -92,7 +92,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.ohyooo.shared.DesktopAppKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
