@@ -9,4 +9,4 @@ pluginManagement {
 
 rootProject.name = "JPSyllabary"
 
-include(":android", ":desktop", ":common")
+include(":android", ":desktop", ":shared")

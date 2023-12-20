@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":common"))
+    implementation(project(":shared"))
     implementation(libs.activity.compose)
 }
 
@@ -31,7 +31,7 @@ android {
             enableV4Signing = true
         }
     }
-    namespace = "com.ohyooo.android"
+    namespace = "com.ohyooo.jpsyllabary"
     compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
         applicationId = libs.versions.application.id.get()
