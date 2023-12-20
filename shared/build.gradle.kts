@@ -90,18 +90,6 @@ android {
     }
 }
 
-compose.desktop {
-    application {
-        mainClass = "com.ohyooo.shared.DesktopAppKt"
-
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.ohyooo.jpsyllabary"
-            packageVersion = "1.0.0"
-        }
-    }
-}
-
 compose.experimental {
     web.application {}
 }
