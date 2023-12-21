@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.DummyFrameworkTask
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose")
-    id("com.android.library")
+    alias(libs.plugins.kmm)
+    alias(libs.plugins.jc)
+    alias(libs.plugins.alp)
 }
 
 group = "com.ohyooo"
@@ -15,15 +13,21 @@ version = "1.0.0"
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composeApp"
+        moduleName = "shared"
         browser {
             commonWebpackConfig {
-                outputFileName = "composeApp.js"
+                outputFileName = "shared.js"
             }
         }
         binaries.executable()
     }
-    androidTarget()
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "21"
+            }
+        }
+    }
     jvm("desktop") {
         jvmToolchain(21)
     }
@@ -33,7 +37,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "shared"
             isStatic = true
         }
     }
