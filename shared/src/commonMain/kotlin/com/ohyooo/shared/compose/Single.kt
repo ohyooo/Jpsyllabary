@@ -15,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -30,6 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ohyooo.shared.res.RR
 import com.ohyooo.shared.viewmodel.SingleViewModel
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.resource
 
 @Composable
 fun Single(onMenuClick: () -> Unit = {}) {
@@ -118,10 +122,11 @@ fun Hint(modifier: Modifier, text: String, visible: Boolean, onClick: () -> Unit
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
     Image(
-        painter = rememberVectorPainter(Icons.Default.Circle),
+        painter = painterResource("images/round.png"),
         contentDescription = "Next",
         contentScale = ContentScale.Inside,
         modifier = modifier
