@@ -7,7 +7,7 @@ version_code = "10"
 version_name = "2.10"
 
 agp = "8.2.0"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 compose_compiler = "1.5.7"
 compose = "1.5.4"
 
@@ -21,7 +21,8 @@ jc = { id = "org.jetbrains.compose", version = "1.6.0-alpha01" }
 
 [libraries]
 # Kotlin
-kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+kotlinx-coroutines-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2"
+kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0-RC2"
 
 # Compose
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose_compiler" }

@@ -52,6 +52,7 @@ kotlin {
                 api(compose.materialIconsExtended)
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
         val androidMain by getting {
@@ -70,6 +71,7 @@ kotlin {
         }
     }
 }
+
 
 android {
     namespace = "com.ohyooo.jpsyllabary.shared"
@@ -92,6 +94,12 @@ android {
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
     }
+}
+
+compose {
+    kotlinCompilerPlugin.set(libs.versions.compose.compiler.get())
+    // kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.22"))
+    // kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.22")
 }
 
 compose.experimental {
