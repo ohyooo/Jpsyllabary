@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -105,7 +106,7 @@ fun Character(modifier: Modifier, text: String) {
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Text(text = text, fontSize = 100.sp, color = MaterialTheme.colorScheme.inverseSurface, modifier = modifier)
+        Text(text = text, fontSize = 80.sp, color = MaterialTheme.colorScheme.inverseSurface, modifier = modifier)
     }
 }
 
