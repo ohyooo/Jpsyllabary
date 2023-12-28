@@ -4,7 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -125,13 +127,20 @@ fun Hint(modifier: Modifier, text: String, visible: Boolean, onClick: () -> Unit
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
-    Image(
-        painter = painterResource("images/round.png"),
-        contentDescription = "Next",
-        contentScale = ContentScale.Inside,
+    Box(
+        contentAlignment = Alignment.Center,
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
-    )
+    ) {
+        Image(
+            painter = painterResource("images/round.png"),
+            contentDescription = "Next",
+            contentScale = ContentScale.Inside,
+            modifier = Modifier
+                .fillMaxHeight(2/3F)
+                .aspectRatio(1F)
+        )
+    }
 }
 
