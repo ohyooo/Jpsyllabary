@@ -47,9 +47,7 @@ fun Single(onMenuClick: () -> Unit = {}) {
         })
 
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         var type by rememberSaveable { mutableStateOf(RR.strings.katakanaWithVoiceless) }
