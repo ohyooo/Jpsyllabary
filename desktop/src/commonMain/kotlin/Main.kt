@@ -3,7 +3,10 @@ import androidx.compose.ui.window.application
 
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
+    Window(
+        title = "JPSyllabary",
+        onCloseRequest = ::exitApplication
+    ) {
         App()
     }
 }

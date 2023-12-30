@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kmm)
     alias(libs.plugins.jc)
     alias(libs.plugins.alp)
+    alias(libs.plugins.ks)
 }
 
 group = "com.ohyooo"
@@ -53,6 +54,7 @@ kotlin {
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.core)
             }
         }
         val androidMain by getting {

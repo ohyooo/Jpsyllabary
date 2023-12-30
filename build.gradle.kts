@@ -12,7 +12,7 @@ allprojects {
         kotlinOptions {
             freeCompilerArgs += listOf(
                 "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+                "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true",
             )
         }
     }
@@ -30,6 +30,7 @@ plugins {
     alias(libs.plugins.alp) apply false
     alias(libs.plugins.kgp) apply false
     alias(libs.plugins.jc) apply false
+    alias(libs.plugins.ks) apply false
 }
 
 

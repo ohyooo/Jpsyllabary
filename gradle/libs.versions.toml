@@ -21,6 +21,7 @@ jc = { id = "org.jetbrains.compose", version = "1.6.0-alpha01" }
 
 [libraries]
 # Kotlin
+kotlinx-serialization-core = "org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.2"
 kotlinx-coroutines-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2"
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0-RC2"
 
