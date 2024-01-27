@@ -99,7 +99,7 @@ android {
 }
 
 compose {
-    kotlinCompilerPlugin.set(libs.versions.compose.compiler.get())
+    // kotlinCompilerPlugin.set(libs.versions.compose.compiler.get())
     // kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.22"))
     // kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.22")
 }
