@@ -12,16 +12,16 @@ group = "com.ohyooo"
 version = "1.0.0"
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        moduleName = "shared"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "shared.js"
-            }
-        }
-        binaries.executable()
-    }
+    // @OptIn(ExperimentalWasmDsl::class)
+    // wasmJs {
+    //     moduleName = "shared"
+    //     browser {
+    //         commonWebpackConfig {
+    //             outputFileName = "shared.js"
+    //         }
+    //     }
+    //     binaries.executable()
+    // }
     androidTarget {
         compilations.all {
             kotlinOptions {
