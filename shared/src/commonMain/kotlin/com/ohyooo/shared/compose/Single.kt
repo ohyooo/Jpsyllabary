@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ohyooo.shared.res.RR
 import com.ohyooo.shared.viewmodel.SingleViewModel
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -128,7 +127,7 @@ fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
             .clickable(onClick = onClick)
     ) {
         Image(
-            painter = painterResource(DrawableResource("images/round.png")),
+            painter = painterResource("images/round.png"),
             contentDescription = "Next",
             contentScale = ContentScale.Inside,
             modifier = Modifier
