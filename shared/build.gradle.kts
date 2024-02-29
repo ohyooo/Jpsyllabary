@@ -107,3 +107,5 @@ compose {
 compose.experimental {
     web.application {}
 }
+
+task("testClasses")

@@ -9,6 +9,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ListAlt
 import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.DataObject
 import androidx.compose.material.icons.filled.Home
@@ -47,7 +48,7 @@ fun Main() {
             ModalDrawerSheet {
                 Spacer(modifier = Modifier.height(64.dp))
                 DrawerNavItem(stringRes = RR.strings.single, route = Route.SINGLE, icon = Icons.Filled.Home, scope, scaffoldState) { route = Route.SINGLE }
-                DrawerNavItem(stringRes = RR.strings.table, route = Route.TABLE, icon = Icons.Filled.ListAlt, scope, scaffoldState) { route = Route.TABLE }
+                DrawerNavItem(stringRes = RR.strings.table, route = Route.TABLE, icon = Icons.AutoMirrored.Filled.ListAlt, scope, scaffoldState) { route = Route.TABLE }
                 DrawerNavItem(stringRes = RR.strings.twister, route = Route.Twister, icon = Icons.Filled.ChangeHistory, scope, scaffoldState) { route = Route.Twister }
                 DrawerNavItem(stringRes = RR.strings.source_code, route = Route.SOURCE, icon = Icons.Filled.DataObject, scope, scaffoldState) { route = Route.SOURCE }
             }

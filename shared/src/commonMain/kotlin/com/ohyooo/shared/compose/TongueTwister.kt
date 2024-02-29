@@ -14,6 +14,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -46,7 +47,7 @@ fun Twister(onMenuClick: () -> Unit = {}) {
 
         var reset by rememberSaveable { mutableStateOf(0L) }
 
-        Divider()
+        HorizontalDivider()
 
         val scope = rememberCoroutineScope()
 
@@ -87,7 +88,7 @@ fun Twister(onMenuClick: () -> Unit = {}) {
                 }
             }
 
-            Divider()
+            HorizontalDivider()
         }
         ClickButton(modifier = Modifier.weight(4F)) {
             reset++

@@ -24,6 +24,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.List
@@ -222,7 +223,7 @@ fun BoxScope.Button(onClick: (Long) -> Unit) {
         items = if (toState == MultiFabState.EXPANDED) {
             listOf(
                 MultiFabItem(Icons.Rounded.Refresh, "Shuffle"),
-                MultiFabItem(Icons.Rounded.List, "Order")
+                MultiFabItem(Icons.AutoMirrored.Rounded.List, "Order")
             )
         } else emptyList(),
         toState = toState,

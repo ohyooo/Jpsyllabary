@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ohyooo.shared.res.RR
 import com.ohyooo.shared.viewmodel.SingleViewModel
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -62,15 +64,15 @@ fun Single(onMenuClick: () -> Unit = {}) {
 
         Type(modifier = Modifier.weight(1F), type)
 
-        Divider(color = Color.Gray, thickness = 1.dp)
+        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
 
         Character(modifier = Modifier.weight(2F), character)
 
-        Divider(color = Color.Gray, thickness = 1.dp)
+        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
 
         Hint(modifier = Modifier.weight(2F), hint, hintVisible, onHintClick)
 
-        Divider(color = Color.Gray, thickness = 1.dp)
+        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
 
         ClickButton(modifier = Modifier.weight(2F), onClick)
     }
@@ -127,7 +129,7 @@ fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
             .clickable(onClick = onClick)
     ) {
         Image(
-            painter = painterResource("images/round.png"),
+            painter = painterResource(DrawableResource("images/round.png")),
             contentDescription = "Next",
             contentScale = ContentScale.Inside,
             modifier = Modifier
