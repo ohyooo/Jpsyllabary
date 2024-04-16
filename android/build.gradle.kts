@@ -38,7 +38,8 @@ android {
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = libs.versions.version.code.get().toInt()
-        versionName = libs.versions.target.sdk.get() + hashTag
+        val gitVersion = providers.of(GitVersionValueSource::class) {}.get()
+        versionName = libs.versions.target.sdk.get() + gitVersion
         proguardFile("proguard-rules.pro")
         signingConfig = signingConfigs.getByName("debug")
     }
