@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.jc)
     alias(libs.plugins.alp)
     alias(libs.plugins.ks)
+    alias(libs.plugins.cc)
 }
 
 group = "com.ohyooo"
@@ -30,7 +31,7 @@ kotlin {
         }
     }
     jvm("desktop") {
-        jvmToolchain(21)
+//        jvmToolchain(21)
     }
     // listOf(
     //     iosX64(),
@@ -98,11 +99,11 @@ android {
     }
 }
 
-compose {
+//compose {
     // kotlinCompilerPlugin.set(libs.versions.compose.compiler.get())
     // kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.22"))
     // kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.22")
-}
+//}
 
 compose.experimental {
     web.application {}

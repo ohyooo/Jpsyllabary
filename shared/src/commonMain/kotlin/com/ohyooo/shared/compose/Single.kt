@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -28,9 +27,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ohyooo.shared.generated.resources.Res
+import com.ohyooo.shared.generated.resources.round
 import com.ohyooo.shared.res.RR
 import com.ohyooo.shared.viewmodel.SingleViewModel
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -128,12 +128,13 @@ fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
             .fillMaxWidth()
             .clickable(onClick = onClick)
     ) {
+
         Image(
-            painter = painterResource(DrawableResource("images/round.png")),
+            painter = painterResource(Res.drawable.round),
             contentDescription = "Next",
             contentScale = ContentScale.Inside,
             modifier = Modifier
-                .fillMaxHeight(2/3F)
+                .fillMaxHeight(2 / 3F)
                 .aspectRatio(1F)
         )
     }

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kgp)
     alias(libs.plugins.jc)
+    alias(libs.plugins.cc)
 }
 
 group = "com.ohyooo"
@@ -64,10 +65,10 @@ android {
         renderScript = false
         shaders = false
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
-    compose {
-        kotlinCompilerPlugin.set(libs.compose.compiler.get().toString())
-    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+//    }
+//    compose {
+//        kotlinCompilerPlugin.set(libs.compose.compiler.get().toString())
+//    }
 }

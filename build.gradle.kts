@@ -12,15 +12,6 @@ allprojects {
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
-
-    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
-        kotlinOptions {
-            freeCompilerArgs += listOf(
-                "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true",
-            )
-        }
-    }
 }
 
 buildscript {
@@ -36,6 +27,7 @@ plugins {
     alias(libs.plugins.kgp) apply false
     alias(libs.plugins.jc) apply false
     alias(libs.plugins.ks) apply false
+    alias(libs.plugins.cc) apply false
 }
 
 abstract class GitVersionValueSource : ValueSource<String, ValueSourceParameters.None> {

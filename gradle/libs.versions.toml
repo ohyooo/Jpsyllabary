@@ -8,7 +8,7 @@ version_name = "2.10"
 
 agp = "8.4.1"
 kotlin = "2.0.0"
-compose_compiler = "1.5.14"
+#compose_compiler = "1.5.14"
 compose = "1.6.7"
 
 [plugins]
@@ -17,7 +17,8 @@ alp = { id = "com.android.library", version.ref = "agp" }
 kgp = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ks = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kmm = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-jc = { id = "org.jetbrains.compose", version = "1.6.1" }
+jc = { id = "org.jetbrains.compose", version = "1.6.10" }
+cc = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [libraries]
 # Kotlin
@@ -26,7 +27,7 @@ kotlinx-coroutines-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
 
 # Compose
-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose_compiler" }
+#compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose_compiler" }
 compose-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = "androidx.compose.material3:material3:1.2.1"
@@ -52,7 +53,7 @@ accompanist-pager-indicators = "com.google.accompanist:accompanist-pager-indicat
 [bundles]
 all = [
     "kotlinx-coroutines-android",
-    "compose-compiler",
+#    "compose-compiler",
     "compose-animation",
     "compose-foundation",
     "compose-material3",
