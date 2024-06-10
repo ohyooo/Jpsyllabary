@@ -1,6 +1,8 @@
 package com.ohyooo.shared.viewmodel
 
-import com.ohyooo.shared.res.RR
+import com.ohyooo.shared.generated.resources.Res
+import com.ohyooo.shared.generated.resources.*
+import org.jetbrains.compose.resources.StringResource
 
 object SingleViewModel {
     private var tvQueue = ArrayList<Int>()
@@ -150,13 +152,13 @@ object SingleViewModel {
     private val count by lazy(LazyThreadSafetyMode.NONE) { dicts.size }
 
     private fun getType(name: Int) = when (name) {
-        in 0..44 -> RR.strings.katakanaWithVoiceless
-        in 45..89 -> RR.strings.hiraganaWithVoiceless
-        in 90..109 -> RR.strings.katakanaWithVoicedSound
-        in 110..129 -> RR.strings.hiraganaWithVoicedSound
-        in 130..134 -> RR.strings.hiraganaWithSemiVoiced
-        in 135..139 -> RR.strings.katakanaWithSemivoiced
-        else -> RR.strings.empty
+        in 0..44 -> Res.string.katakanaWithVoiceless
+        in 45..89 -> Res.string.hiraganaWithVoiceless
+        in 90..109 -> Res.string.katakanaWithVoicedSound
+        in 110..129 -> Res.string.hiraganaWithVoicedSound
+        in 130..134 -> Res.string.hiraganaWithSemiVoiced
+        in 135..139 -> Res.string.katakanaWithSemivoiced
+        else -> Res.string.empty
     }
 
     fun get(): SingleModel {
@@ -193,7 +195,7 @@ object SingleViewModel {
 }
 
 class SingleModel(
-    val title: String,
+    val title: StringResource,
     val kana: String,
     val pron: String,
 )

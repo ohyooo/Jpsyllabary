@@ -28,11 +28,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ohyooo.shared.generated.resources.Res
+import com.ohyooo.shared.generated.resources.katakanaWithVoiceless
 import com.ohyooo.shared.generated.resources.round
-import com.ohyooo.shared.res.RR
 import com.ohyooo.shared.viewmodel.SingleViewModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun Single(onMenuClick: () -> Unit = {}) {
@@ -46,7 +48,7 @@ fun Single(onMenuClick: () -> Unit = {}) {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        var type by rememberSaveable { mutableStateOf(RR.strings.katakanaWithVoiceless) }
+        var type by rememberSaveable { mutableStateOf(Res.string.katakanaWithVoiceless) }
         var character by rememberSaveable { mutableStateOf("あ") }
         var hint by rememberSaveable { mutableStateOf("a") }
         var hintVisible by rememberSaveable { mutableStateOf(false) }
@@ -79,13 +81,13 @@ fun Single(onMenuClick: () -> Unit = {}) {
 }
 
 @Composable
-fun Type(modifier: Modifier, text: String) {
+fun Type(modifier: Modifier, text: StringResource) {
     Box(
         modifier = modifier,
         contentAlignment = Alignment.BottomCenter
     ) {
         Text(
-            text = text,
+            text = stringResource(text),
             modifier = modifier,
             color = MaterialTheme.colorScheme.inverseSurface,
             fontSize = 18.sp,

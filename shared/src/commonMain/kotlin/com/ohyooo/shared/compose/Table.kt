@@ -27,10 +27,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.MaterialTheme
-import com.ohyooo.shared.common.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,9 +44,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ohyooo.shared.common.Text
 import com.ohyooo.shared.compose.multifab.MultiFabItem
 import com.ohyooo.shared.compose.multifab.MultiFabState
 import com.ohyooo.shared.compose.multifab.MultiFloatingActionButton
+import com.ohyooo.shared.generated.resources.Res
+import com.ohyooo.shared.generated.resources.*
 import com.ohyooo.shared.model.hiragana
 import com.ohyooo.shared.model.katakana
 import com.ohyooo.shared.model.normalSequence
@@ -58,10 +59,10 @@ import com.ohyooo.shared.model.shuffle
 import com.ohyooo.shared.model.sonant
 import com.ohyooo.shared.model.sonantRomaji
 import com.ohyooo.shared.model.sonantSequence
-import com.ohyooo.shared.res.RR
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -104,7 +105,7 @@ fun Fragment(onMenuClick: () -> Unit = {}) {
     }
 }
 
-private val tabList = listOf(RR.strings.hiragana, RR.strings.katakana, RR.strings.romaji, RR.strings.sonant)
+private val tabList = listOf(Res.string.hiragana, Res.string.katakana, Res.string.romaji, Res.string.sonant)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -121,7 +122,7 @@ private fun Tab(pagerState: PagerState, scope: CoroutineScope) {
                 onClick = { scope.launch { pagerState.scrollToPage(index) } },
                 text = {
                     AutoResizeText(
-                        text = stringRes,
+                        text = stringResource(stringRes),
                         fontSizeRange = FontSizeRange(8.sp, 12.sp),
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.inverseSurface,
