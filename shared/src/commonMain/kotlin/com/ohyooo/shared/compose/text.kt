@@ -1,7 +1,7 @@
 package com.ohyooo.shared.compose
 
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.Text
+import com.ohyooo.shared.common.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
