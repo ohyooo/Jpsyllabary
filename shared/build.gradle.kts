@@ -1,5 +1,8 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kmm)
@@ -15,6 +18,22 @@ version = "1.0.0"
 kotlin {
     androidTarget()
     jvm("desktop")
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        moduleName = "shared"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "shared.js"
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.projectDir.path)
+                    }
+                }
+            }
+        }
+        binaries.executable()
+    }
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -24,7 +43,6 @@ kotlin {
                 api(compose.material)
                 api(compose.material3)
                 api(compose.materialIconsExtended)
-                @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.serialization.core)

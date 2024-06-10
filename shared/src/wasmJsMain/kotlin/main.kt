@@ -1,7 +1,11 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.CanvasBasedWindow
+import com.ohyooo.shared.compose.*
+import androidx.compose.ui.window.ComposeViewport
+import kotlinx.browser.document
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    CanvasBasedWindow(canvasElementId = "ComposeTarget") { App() }
+    ComposeViewport(document.body!!) {
+        App()
+    }
 }
