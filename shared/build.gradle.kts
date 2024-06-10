@@ -13,36 +13,8 @@ group = "com.ohyooo"
 version = "1.0.0"
 
 kotlin {
-    // @OptIn(ExperimentalWasmDsl::class)
-    // wasmJs {
-    //     moduleName = "shared"
-    //     browser {
-    //         commonWebpackConfig {
-    //             outputFileName = "shared.js"
-    //         }
-    //     }
-    //     binaries.executable()
-    // }
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "21"
-            }
-        }
-    }
-    jvm("desktop") {
-//        jvmToolchain(21)
-    }
-    // listOf(
-    //     iosX64(),
-    //     iosArm64(),
-    //     iosSimulatorArm64()
-    // ).forEach { iosTarget ->
-    //     iosTarget.binaries.framework {
-    //         baseName = "shared"
-    //         isStatic = true
-    //     }
-    // }
+    androidTarget()
+    jvm("desktop")
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -99,14 +71,5 @@ android {
     }
 }
 
-//compose {
-    // kotlinCompilerPlugin.set(libs.versions.compose.compiler.get())
-    // kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.22"))
-    // kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.22")
-//}
-
-compose.experimental {
-    web.application {}
-}
 
 task("testClasses")
