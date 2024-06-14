@@ -1,5 +1,6 @@
 package com.ohyooo.shared
 
+import org.jetbrains.compose.resources.FontResource
 import java.awt.Desktop
 import java.net.URI
 import java.util.Locale
@@ -17,3 +18,4 @@ actual fun openGitHub() {
     }
 }
 
+actual fun getFont(): FontResource? = null

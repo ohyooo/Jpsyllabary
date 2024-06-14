@@ -1,6 +1,7 @@
 package com.ohyooo.shared.common
 
 import androidx.compose.material.LocalTextStyle
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -13,10 +14,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
-import com.ohyooo.shared.generated.resources.Res
-import com.ohyooo.shared.generated.resources.source_han_sans_sc
+import com.ohyooo.shared.getFont
 import org.jetbrains.compose.resources.Font
-import androidx.compose.material3.Text
 
 @Composable
 fun Text(
@@ -45,7 +44,7 @@ fun Text(
         fontSize = fontSize,
         fontStyle = fontStyle,
         fontWeight = fontWeight,
-        fontFamily = fontFamily ?: FontFamily(Font(Res.font.source_han_sans_sc)),
+        fontFamily = fontFamily ?: getFont()?.let { FontFamily(Font(it)) },
         letterSpacing = letterSpacing,
         textDecoration = textDecoration,
         textAlign = textAlign,

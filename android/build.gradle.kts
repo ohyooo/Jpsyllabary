@@ -60,7 +60,7 @@ android {
     buildFeatures {
         compose = true
         // Disable unused AGP features
-        buildConfig = false
+        // buildConfig = false
         aidl = false
         renderScript = false
         shaders = false
