@@ -39,7 +39,7 @@ android {
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = libs.versions.version.code.get().toInt()
-        versionName = libs.versions.target.sdk.get() + rootProject.extra["gitVersion"]
+        versionName = libs.versions.version.name.get() + rootProject.extra["gitVersion"]
         proguardFile("proguard-rules.pro")
         signingConfig = signingConfigs.getByName("debug")
     }
