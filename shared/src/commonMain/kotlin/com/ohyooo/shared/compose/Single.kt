@@ -18,6 +18,7 @@ import com.ohyooo.shared.common.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -31,8 +32,9 @@ import com.ohyooo.shared.generated.resources.Res
 import com.ohyooo.shared.generated.resources.katakanaWithVoiceless
 import com.ohyooo.shared.generated.resources.round
 import com.ohyooo.shared.viewmodel.SingleViewModel
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -48,14 +50,15 @@ fun Single(onMenuClick: () -> Unit = {}) {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        var type by rememberSaveable { mutableStateOf(Res.string.katakanaWithVoiceless) }
+        val defaultType = stringResource(Res.string.katakanaWithVoiceless)
+        var type by rememberSaveable { mutableStateOf(defaultType) }
         var character by rememberSaveable { mutableStateOf("あ") }
         var hint by rememberSaveable { mutableStateOf("a") }
         var hintVisible by rememberSaveable { mutableStateOf(false) }
 
-        val onClick: () -> Unit = {
+        val onClick: suspend () -> Unit = {
             SingleViewModel.get().apply {
-                type = title
+                type = getString(title)
                 character = kana
                 hint = pron
                 hintVisible = false
@@ -81,13 +84,13 @@ fun Single(onMenuClick: () -> Unit = {}) {
 }
 
 @Composable
-fun Type(modifier: Modifier, text: StringResource) {
+fun Type(modifier: Modifier, text: String) {
     Box(
         modifier = modifier,
         contentAlignment = Alignment.BottomCenter
     ) {
         Text(
-            text = stringResource(text),
+            text = text,
             modifier = modifier,
             color = MaterialTheme.colorScheme.inverseSurface,
             fontSize = 18.sp,
@@ -123,14 +126,18 @@ fun Hint(modifier: Modifier, text: String, visible: Boolean, onClick: () -> Unit
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun ClickButton(modifier: Modifier, onClick: () -> Unit) {
+fun ClickButton(modifier: Modifier, onClick: suspend () -> Unit) {
+    val scope = rememberCoroutineScope()
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable(onClick = {
+                scope.launch {
+                    onClick()
+                }
+            })
     ) {
-
         Image(
             painter = painterResource(Res.drawable.round),
             contentDescription = "Next",
