@@ -3,7 +3,7 @@ application_id = "com.ohyooo.jpsyllabary"
 min_sdk = "21"
 target_sdk = "34"
 compile_sdk = "34"
-version_code = "11"
+version_code = "30"
 version_name = "3.00"
 
 agp = "8.5.0"
