@@ -7,7 +7,7 @@ version_code = "32"
 version_name = "3.01"
 
 agp = "8.5.1"
-kotlin = "2.0.0"
+kotlin = "2.0.10"
 compose = "1.6.8"
 
 [plugins]
