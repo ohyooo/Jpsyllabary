@@ -4,6 +4,8 @@ on:
   push:
   repository_dispatch:
   workflow_dispatch:
+  release:
+    types: [published]
 
 permissions:
   actions: write
@@ -38,8 +40,15 @@ jobs:
       - name: Build APK
         run: ./gradlew :android:assembleRelease
 
+      - name: Upload to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref }}_${{ steps.time.outputs.time }}
+          path: android/build/outputs/apk/release/*.apk
+
       - name: Upload to release
         uses: svenstaro/upload-release-action@master
+        if: github.event_name == 'release'
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: android/build/outputs/apk/release/*.apk
