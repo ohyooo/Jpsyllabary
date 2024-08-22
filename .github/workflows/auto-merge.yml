@@ -8,7 +8,7 @@ on:
 jobs:
   dependabot-merge:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' || github.event.pull_request.user.login == 'gradle-update-robot' }}
     steps:
       - uses: peter-evans/find-comment@main
         id: find-comment
