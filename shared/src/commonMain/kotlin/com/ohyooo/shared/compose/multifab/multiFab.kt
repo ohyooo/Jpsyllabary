@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
+import androidx.compose.material.ripple.createRippleModifierNode
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
@@ -135,12 +136,6 @@ private fun MiniFabItem(
                 .padding(4.dp)
                 .clickable(
                     onClick = { onFabItemClicked(item) },
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = rememberRipple(
-                        bounded = false,
-                        radius = 20.dp,
-                        color = MaterialTheme.colorScheme.secondary
-                    )
                 )
         ) {
             Icon(
@@ -171,12 +166,6 @@ private fun Minimal(
             .background(fabColor)
             .clickable(
                 onClick = { onFabItemClicked(item) },
-                interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(
-                    bounded = false,
-                    radius = 20.dp,
-                    color = MaterialTheme.colorScheme.onSecondary
-                )
             )
     ) {
         Icon(
